@@ -37,6 +37,9 @@ function check() {
     else if (userInput.value == "") {
         alert('Kindly enter your score')
     }
+    else if (userInput.value<0) {
+        alert('The score is out of range')
+    }
     else if ((insert == 1) && (userInput.value > oauCutOff)) {
         alert('Admission Successful')
         admission.innerHTML = ife

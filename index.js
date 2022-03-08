@@ -24,6 +24,7 @@ var await = 'ADMISSION IS NOT YET OFFERED'
 function check() {
     var done = document.getElementById('school')
     var insert = done.options[done.selectedIndex].value;
+    song.pause()
     if ((studentId.value) == "") {
         alert('please Enter your Registration Number')
     }
@@ -32,6 +33,9 @@ function check() {
     }
     else if ((yourName.value == "")) {
         alert('please Enter your Name')
+    }
+    else if (userInput.value == "") {
+        alert('Kindly enter your score')
     }
     else if ((insert == 1) && (userInput.value > oauCutOff)) {
         alert('Admission Successful')
@@ -45,6 +49,7 @@ function check() {
     else if ((insert == 1) && (userInput.value < oauCutOff)) {
         alert('No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + IFE
+        music.play()
     }
     else if ((insert == 2) && (userInput.value > uiCutOff)) {
         alert('Admission succeeded')
@@ -110,6 +115,7 @@ function check() {
         alert(' No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + EKSU
     }
+   
     
     else { alert('kindly select your institution') }
 

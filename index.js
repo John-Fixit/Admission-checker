@@ -1,6 +1,8 @@
-var music = new Audio('no admission.m4a')
-var song = new Audio('Nigeria Anthem.m4a')
-song.play()
+var song1 = new Audio('Nigeria Anthem.m4a')
+var song2 = new Audio('no admission')
+var song3 = new Audio('clapping-sound.m4a')
+var song4 = new Audio('Fail-sound.m4a')
+song1.play()
 var oauCutOff = 250;
 var uiCutOff = 240;
 var futaCutOff = 230;
@@ -24,11 +26,11 @@ var await = 'ADMISSION IS NOT YET OFFERED'
 function check() {
     var done = document.getElementById('school')
     var insert = done.options[done.selectedIndex].value;
-    song.pause()
+    song1.pause()
     if ((studentId.value) == "") {
         alert('please Enter your Registration Number')
     }
-    else if (userInput.value > 400) {
+    else if (userInput.value<0 || userInput.value > 400) {
         alert(' Score is out of range')
     }
     else if ((yourName.value == "")) {
@@ -37,12 +39,11 @@ function check() {
     else if (userInput.value == "") {
         alert('Kindly enter your score')
     }
-    else if (userInput.value<0) {
-        alert('The score is out of range')
-    }
     else if ((insert == 1) && (userInput.value > oauCutOff)) {
         alert('Admission Successful')
         admission.innerHTML = ife
+        song3.play()
+
     }
     else if ((insert == 1) && (userInput.value == oauCutOff)) {
         alert('Admission on process')
@@ -52,11 +53,12 @@ function check() {
     else if ((insert == 1) && (userInput.value < oauCutOff)) {
         alert('No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + IFE
-        music.play()
+        song4.play()
     }
     else if ((insert == 2) && (userInput.value > uiCutOff)) {
         alert('Admission succeeded')
         admission.innerHTML = ibadan
+        song3.play()
     }
     else if ((insert == 2) && (userInput.value == uiCutOff)) {
         alert('Admission on process')
@@ -65,11 +67,15 @@ function check() {
     else if ((insert == 2) && (userInput.value < uiCutOff)) {
         alert(' No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + UI
+        song4.play()
+
     }
 
     else if ((insert == 3) && (userInput.value > futaCutOff)) {
         alert('Admission succeeded')
         admission.innerHTML = akure
+        song3.play()
+
     }
     else if ((insert == 3) && (userInput.value == futaCutOff)) {
         alert('Admission on process')
@@ -78,11 +84,15 @@ function check() {
     else if ((insert == 3) && (userInput.value < futaCutOff)) {
         alert(' No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF THE SELECTED INSTITUTION' + FUTA
+        song4.play()
+
     }
 
     else if ((insert == 4) && (userInput.value > lasuCutOff)) {
         alert('Admission succeeded')
         admission.innerHTML = lagos
+        song3.play()
+
     }
     else if ((insert == 4) && (userInput.value == lasuCutOff)) {
         alert('Admission on process')
@@ -91,11 +101,15 @@ function check() {
     else if ((insert == 4) && (userInput.value < lasuCutOff)) {
         alert(' No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + LASU
+        song4.play()
+
     }
 
     else if ((insert == 5) && (userInput.value > lautechCutOff)) {
         alert('Admission succeeded')
         admission.innerHTML = ogb
+        song3.play()
+
     }
     else if ((insert == 5) && (userInput.value == lautechCutOff)) {
         alert('Admission on process')
@@ -104,11 +118,15 @@ function check() {
     else if ((insert == 5) && (userInput.value < lautechCutOff)) {
         alert(' No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + LAU
+        song4.play()
+
     }
 
     else if ((insert == 6) && (userInput.value > eksuCutOff)) {
         alert('Admission succeeded')
         admission.innerHTML = ekiti
+        song3.play()
+
     }
     else if ((insert == 6) && (userInput.value == eksuCutOff)) {
         alert('Admission on process')
@@ -117,6 +135,8 @@ function check() {
     else if ((insert == 6) && (userInput.value < eksuCutOff)) {
         alert(' No Admission')
         admission.innerHTML = 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + EKSU
+        song4.play()
+
     }
    
     
@@ -129,7 +149,7 @@ function accept() {
     }
     else if (admission.innerHTML == await) {
         adm.innerHTML = 'NO ADMISSION DECLARED YET'
-        music.play()
+        song2.play()
     }
     else if (admission.innerHTML == 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + (IFE || UI || FUTA || LASU || LAU || EKSU)){
         adm.innerHTML = 'NOTHING TO ACCEPT'
@@ -143,7 +163,7 @@ function reject() {
     }
     else if (admission.innerHTML == await) {
         adm.innerHTML = 'NO ADMISSION DECLARED YET'
-        music.play()
+        song2.play()
     }
     else if (admission.innerHTML == 'NO ADMISSION YET,YOUR SCORE IS NOT UP TO THE REQUIREMENT OF ' + (IFE || UI || FUTA || LASU || LAU || EKSU)) {
         adm.innerHTML = 'NOTHING TO REJECT'
